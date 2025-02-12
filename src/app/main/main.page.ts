@@ -26,11 +26,14 @@ export class MainPage implements OnInit, AfterViewInit {
     }, 3000);
   }
 
+  private animationStarted = false;
+
   ngAfterViewInit() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !this.animationStarted) {
+            this.animationStarted = true;
             this.startCounterAnimation();
             observer.disconnect(); // Отключаем, чтобы не повторялось
           }
@@ -38,7 +41,7 @@ export class MainPage implements OnInit, AfterViewInit {
       },
       { threshold: 0.5 } // Запуск при 50% видимости
     );
-
+  
     if (this.counterElement) {
       observer.observe(this.counterElement.nativeElement);
     }
