@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      DailyTasks.su
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,8 +13,71 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-grid>
+    <ion-row *ngFor="let dailyTask of dailyTasks">
+      <ion-col>
+        <ion-card>
+          <ion-card-content>
+            <ion-card>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-title style="color: var(--ion-text-color);">Задача Дня</ion-title>
+                  </ion-col>
+                  <ion-col>
+                    <ion-title style="text-align: right;">{{ dailyTask.date }}</ion-title>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+            <ion-card>
+              <div class="card-content">
+                <img [src]="dailyTask.image" alt="image" class="card-image">
+                <div class="card-text">
+                  <p #mathContent [innerHTML]="dailyTask.task"></p>
+                </div>
+              </div>
+            </ion-card>
+            <!-- <ion-card>
+              <ion-title style="color: var(--ion-text-color); margin-top: 5px;">Решение</ion-title>
+              <div style="margin: 10px;">
+                <app-spoiler [text]="dailyTask.solution"></app-spoiler>
+              </div>
+            </ion-card> -->
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              Организации
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item *ngFor="let organization of organizations" lines="none">
+                <ion-card (click)="onOrganizationClick(organization.tag)" class="full-width-card">
+                  <ion-card-header>
+                    <ion-card-title>
+                      {{ organization.name }}
+                    </ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    {{ organization.description }}
+                  </ion-card-content>
+                </ion-card>
+              </ion-item>
+
+              <ion-item *ngIf="organizations.length === 0">
+                <ion-label class="ion-text-center">
+                  No organizations found.
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col> -->
+    </ion-row>
+  </ion-grid>
 </ion-content>

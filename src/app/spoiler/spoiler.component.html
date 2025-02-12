@@ -1,0 +1,9 @@
+<!-- <ion-card >
+  <ion-card-content > -->
+<div class="spoiler-container">
+  <div class="spoiler-text" [class.revealed]="isRevealed" (click)="toggleSpoiler()">
+    {{ isRevealed ? text : '|| Hidden Content ||' }}
+  </div>
+</div>
+<!-- </ion-card-content>
+</ion-card> -->

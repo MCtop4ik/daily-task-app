@@ -1,27 +1,65 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.full-width-card {
+    width: 100%;
+    margin: 0;
+    background-color: var(--ion-color-light);
+    border: 1px solid #ccc;
+    border-radius: 10px;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+ion-item {
+    margin-top: 5px;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.card-content {
+    display: flex;
+    align-items: center;
+    margin: 10px;
 }
 
-#container a {
-  text-decoration: none;
+.card-image {
+    width: 40%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.card-text {
+    flex: 1;
+    padding-left: 15px;
+}
+
+.spoiler {
+    background-color: #f0f0f0;
+    padding: 10px;
+    cursor: pointer;
+    color: transparent;
+    user-select: none;
+}
+
+.spoiler.revealed {
+    color: black;
+    background-color: #ffffff;
+}
+
+.feedback-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+:root {
+    --title-color-light: black;
+    --title-color-dark: white;
+}
+
+ion-title {
+    color: var(--title-color-light);
+}
+
+.ios body.dark ion-title,
+.md body.dark ion-title {
+    color: var(--title-color-dark);
 }

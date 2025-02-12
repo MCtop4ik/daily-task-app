@@ -1,0 +1,144 @@
+html,
+body,
+ion-content {
+    scroll-behavior: smooth;
+}
+
+.page-background {
+    display: none;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .page-background {
+        display: block;
+        background-image: url('/assets/dolphin-main.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+
+    .page-background h1 {
+        position: absolute;
+        font-size: 2rem;
+        font-weight: bold;
+        color: white;
+        z-index: 2;
+    }
+
+    .page-background .top-left {
+        top: 15%;
+        left: 5%;
+    }
+
+    .page-background .bottom-right {
+        bottom: 30%;
+        right: 5%;
+    }
+
+    .logo-container {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        display: flex;
+        align-items: center;
+        z-index: 2;
+    }
+
+    .logo-container img {
+        width: 80px;
+        height: auto;
+    }
+
+    .logo-container h1 {
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        margin-left: 70px;
+    }
+
+    .about-us {
+        background-color: rgb(98, 131, 142);
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+        transition: background-color 0.5s ease;
+    }
+
+    .counter-container {
+        margin-bottom: 30px;
+    }
+
+    .highlight-text {
+        color: #F4C2C2;
+        font-size: 30px;
+        font-style: oblique;
+        transition: color 0.5s ease;
+    }
+
+    .counter-text {
+        color: #FFFFFF;
+        font-size: 50px;
+        font-weight: 900;
+        transition: color 0.5s ease;
+    }
+
+    .info-container {
+        margin-top: 10px;
+    }
+
+    .white-text {
+        color: #FFFFFF;
+        font-size: 30px;
+    }
+
+    @media (min-width: 768px) {
+        .highlight-text {
+            font-size: 40px;
+        }
+
+        .counter-text {
+            font-size: 70px;
+        }
+
+        .white-text {
+            font-size: 40px;
+        }
+    }
+
+    @keyframes counterAnimation {
+        0% {
+            transform: translateY(-30px);
+            opacity: 0;
+        }
+
+        50% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+    }
+
+    .counter-container h1 {
+        animation: counterAnimation 2s ease-in-out infinite;
+    }
+
+    .menu {
+        position: absolute;
+        top: 40px;
+        right: 45px;
+        display: flex;
+        align-items: center;
+        z-index: 2;
+    }
+}

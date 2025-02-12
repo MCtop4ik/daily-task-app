@@ -1,0 +1,18 @@
+.spoiler-container {
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.spoiler-text {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    color: transparent;
+    transition: color 0.3s ease-in-out;
+}
+
+.spoiler-text.revealed {
+    color: black;
+    background-color: white;
+}
