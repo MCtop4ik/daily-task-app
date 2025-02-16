@@ -7,7 +7,7 @@ import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angula
   standalone: false
 })
 export class MainPage implements OnInit, AfterViewInit { 
-  slogans: string[] = ["Живем не ради ЕГЭ!", "#ОлМат в массы", "Ведьмочек сожгли!", "Ботва Еверидей"];
+  slogans: string[] = ["Живем не ради ЕГЭ!", "Ведьмочек сожгли!", "Ботва Еверидей"];
   currentSlogan: string = this.slogans[0];
   index: number = 0;
   router: any;

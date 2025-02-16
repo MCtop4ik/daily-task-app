@@ -32,18 +32,18 @@
             </ion-card>
             <ion-card>
               <div class="card-content">
-                <img [src]="dailyTask.image" alt="image" class="card-image">
+                <img *ngIf="dailyTask.image" [src]="dailyTask.image" alt="image" class="card-image">
                 <div class="card-text">
                   <p #mathContent [innerHTML]="dailyTask.task"></p>
                 </div>
               </div>
             </ion-card>
-            <!-- <ion-card>
+            <ion-card *ngIf="dailyTask.solution">
               <ion-title style="color: var(--ion-text-color); margin-top: 5px;">Решение</ion-title>
               <div style="margin: 10px;">
                 <app-spoiler [text]="dailyTask.solution"></app-spoiler>
               </div>
-            </ion-card> -->
+            </ion-card>
           </ion-card-content>
         </ion-card>
       </ion-col>
