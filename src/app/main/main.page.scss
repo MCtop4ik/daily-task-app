@@ -117,23 +117,23 @@ ion-content {
             transform: translateY(-30px) scale(0.8);
             opacity: 0;
         }
-    
+
         30% {
             transform: translateY(0) scale(1.05);
             opacity: 0.7;
         }
-    
+
         60% {
             transform: translateY(-10px) scale(0.95);
             opacity: 1;
         }
-    
+
         100% {
             transform: translateY(0) scale(1);
             opacity: 1;
         }
     }
-    
+
     .counter-container h1 {
         animation: counterAnimation 5s ease-out forwards;
     }
@@ -145,5 +145,68 @@ ion-content {
         display: flex;
         align-items: center;
         z-index: 2;
+    }
+}
+
+@media (max-width: 767px) {
+    .menu {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .menu a {
+        display: none;
+    }
+
+    .menu a:first-child {
+        display: block;
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 15px 20px;
+        background-color: #F4C2C2;
+        color: #000;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+
+    .arrow-container {
+        position: absolute;
+        top: -60px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .arrow {
+        width: 30px;
+        height: 30px;
+        border-right: 4px solid white;
+        border-bottom: 4px solid white;
+        transform: rotate(45deg);
+        margin: 5px;
+        animation: bounce 1.5s infinite;
+    }
+
+    .arrow:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .arrow:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0) rotate(45deg);
+        }
+        50% {
+            transform: translateY(-10px) rotate(45deg);
+        }
     }
 }
