@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class HttpService {
-  private baseUrl = 'http://sparkydolphins.ru/api';
+  private baseUrl = 'https://sparkydolphins.ru/api';
+  // private baseUrl = 'http://localhost:5000';
 
   constructor(private http: HttpClient) {}
 
