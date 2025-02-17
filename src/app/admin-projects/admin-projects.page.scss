@@ -1,0 +1,35 @@
+:root {
+    --line-color: #000;
+    --text-color: #000;
+    --bg-color: #fff;
+}
+
+.dark-mode {
+    --line-color: #fff;
+    --text-color: #fff;
+    --bg-color: #222;
+}
+
+.line-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.line {
+    flex: 1;
+    height: 2px;
+    background-color: var(--line-color);
+}
+
+.year {
+    padding: 0 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
