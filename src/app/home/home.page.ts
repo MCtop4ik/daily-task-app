@@ -1,11 +1,20 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpService } from '../services/http.service';
 
 type Organization = {
   id: number;
   name: string;
   tag: string;
   description: string;
+}
+
+type Task = {
+  id: number;
+  task: string;
+  date: string;
+  solution: string;
+  image: string;
 }
 
 declare var MathJax: any;
@@ -16,49 +25,21 @@ declare var MathJax: any;
   styleUrls: ['home.page.scss'],
   standalone: false,
 })
-export class HomePage {
+export class HomePage implements OnInit {
   @ViewChild('mathContent') mathContent!: ElementRef;
   organizations: Array<Organization>;
-  dailyTasks = [{
-    task: `  В честь тыквенного спаса дед Архип собрал 202500 тыкв, 
-    однако некоторые из них оказались испорченными. 
-    Архипу известно, что среди каждых 500 тыкв есть хотя бы одна порченая. 
-    Какое наибольшее количество хороших тыкв мог собрать Архип?
-    `,
-    date: '17/02/2025',
-    solution: null,
-    image: null
-  },{
-    task: `После учебы лицеисты разбегаются по своим домам, 
-    каждый идет по кратчайшему расстоянию (по прямой от школы до дома). 
-    Учитель географии узнал, что суммарное расстояние, 
-    пройденное ими после школы на север равно расстоянию, 
-    пройденному на юг, а также что расстояние, 
-    пройденное на восток равно расстоянию, пройденному на запад. 
-    Обязательно ли то же самое будет выполняться
-     для северо востока и югозапада; северозапада и юговостока? 
-     (считаем расстояние, пройденное в опр направлении как проекцию на прямую этого направления)
-    `,
-    date: '09/02/2025',
-    solution: null,
-    image: null
-  },{
-    task: `Найти точку, равноудалённую от четырёх точек
-            Рассмотрим треугольник \\(ABC\\). Пусть:
-            \\( I \\) — центр вписанной окружности треугольника \\( ABC \\).
-            \\( I_a \\) — центр вневписанной окружности, противоположной вершине \\( A \\).
-            \\( L \\) — точка пересечения отрезка \\( II_a \\) с дугой описанной окружности, не содержащей точку \\( A \\).
-            Докажите, что точка \\( L \\) равноудалена от точек \\( I \\), \\( I_a \\), \\( B \\) и \\( C \\).
-    `,
-    date: '08/02/2025',
-    solution: `solution`,
-    image: `assets/mansion-lemma.png`
-  }];
+  dailyTasks: Array<Task> = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private httpService: HttpService) {
     this.organizations = [{ 'id': 1, 'name': 'Senya Zakharov', 'tag': 'senyazak', 'description': 'hihjijijjii' },
     { 'id': 2, 'name': 'Andrew', 'tag': 'djcooki', 'description': 'hihjijijjii' }
     ];
+  }
+
+  ngOnInit(): void {
+    this.httpService.getTasks().subscribe((tasks: any)=> {
+      this.dailyTasks = tasks;
+    })
   }
 
 
