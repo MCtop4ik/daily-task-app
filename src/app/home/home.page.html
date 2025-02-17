@@ -11,7 +11,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-grid>
-    <ion-row *ngFor="let dailyTask of dailyTasks">
+    <ion-row *ngFor="let dailyTask of getAvailableTasks()">
       <ion-col>
         <ion-card>
           <ion-card-content>

@@ -82,4 +82,13 @@ export class HomePage {
     this.router.navigate(['organization', tag, 'main'])
   }
 
+  getAvailableTasks() {
+    const today = new Date();
+    return this.dailyTasks.filter(task => {
+      const taskDate = new Date(task.date.split('/').reverse().join('-'));
+      return taskDate <= today;
+    });
+  }
+  
+
 }
