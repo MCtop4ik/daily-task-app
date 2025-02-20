@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class HttpService {
-  private baseUrl = 'https://sparkydolphins.ru/api';
-  // private baseUrl = 'http://localhost:5000';
+  // private baseUrl = 'https://sparkydolphins.ru/api';
+  private baseUrl = 'http://localhost:5000';
 
   constructor(private http: HttpClient) {}
 
@@ -28,5 +28,12 @@ export class HttpService {
     return this.http.get(`${this.baseUrl}/tasks`, this.getOptions());
   }
 
-
+  login(username: string, password: string): Observable<any> {
+    const body = {
+      username: username,
+      password: password
+    };
+  
+    return this.http.post(`${this.baseUrl}/login`, body, this.getOptions());
+  }
 }

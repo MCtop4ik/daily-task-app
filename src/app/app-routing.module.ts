@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'admin-projects',
     loadChildren: () => import('./admin-projects/admin-projects.module').then( m => m.AdminProjectsPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
 ];
 
 @NgModule({
