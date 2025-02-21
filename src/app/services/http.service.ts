@@ -36,4 +36,34 @@ export class HttpService {
   
     return this.http.post(`${this.baseUrl}/login`, body, this.getOptions());
   }
+
+  createTask(task: string, date: string): Observable<any> {
+    const body = {
+      task: task,
+      date: date,
+      image: null,
+      solution: null
+    };
+  
+    return this.http.post(`${this.baseUrl}/create-task`, body, this.getOptions());
+  }
+
+  editTask(task: string, date: string): Observable<any> {
+    const body = {
+      task: task,
+      date: date,
+      image: null,
+      solution: null
+    };
+  
+    return this.http.post(`${this.baseUrl}/delete-task`, body, this.getOptions());
+  }
+
+  deleteTask(task_id: number): Observable<any> {
+    const body = {
+      task_id: task_id
+    };
+  
+    return this.http.post(`${this.baseUrl}/delete-task`, body, this.getOptions());
+  }
 }

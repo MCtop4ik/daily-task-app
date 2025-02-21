@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'create-daily-task',
+    loadChildren: () => import('./create-daily-task/create-daily-task.module').then( m => m.CreateDailyTaskPageModule)
+  },
+  {
+    path: 'delete-daily-task',
+    loadChildren: () => import('./delete-daily-task/delete-daily-task.module').then( m => m.DeleteDailyTaskPageModule)
+  },
 ];
 
 @NgModule({

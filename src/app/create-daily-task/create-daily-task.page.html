@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>CreateDailyTask</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <ion-item>
+          <ion-label position="floating">Первое поле</ion-label>
+          <ion-input formControlName="firstField" type="text"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="form.controls['firstField'].invalid && form.controls['firstField'].touched">
+          <ion-text color="danger">Поле обязательно!</ion-text>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">Второе поле</ion-label>
+          <ion-input formControlName="secondField" type="text"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="form.controls['secondField'].invalid && form.controls['secondField'].touched">
+          <ion-text color="danger">Поле обязательно!</ion-text>
+        </ion-item>
+  
+        <ion-button expand="full" type="submit" [disabled]="form.invalid">Отправить</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

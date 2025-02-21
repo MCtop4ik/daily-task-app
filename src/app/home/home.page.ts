@@ -1,13 +1,14 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
+import { MathJaxService } from '../services/mathjax.service';
 
 type Organization = {
   id: number;
   name: string;
   tag: string;
   description: string;
-}
+};
 
 type Task = {
   id: number;
@@ -15,33 +16,35 @@ type Task = {
   date: string;
   solution: string;
   image: string;
-}
-
-declare var MathJax: any;
+};
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  standalone: false,
+  standalone: false
 })
 export class HomePage implements OnInit {
   @ViewChild('mathContent') mathContent!: ElementRef;
   organizations: Array<Organization>;
   dailyTasks: Array<Task> = [];
 
-  constructor(private router: Router, private httpService: HttpService) {
-    this.organizations = [{ 'id': 1, 'name': 'Senya Zakharov', 'tag': 'senyazak', 'description': 'hihjijijjii' },
-    { 'id': 2, 'name': 'Andrew', 'tag': 'djcooki', 'description': 'hihjijijjii' }
+  constructor(
+    private router: Router,
+    private httpService: HttpService,
+    private mathJaxService: MathJaxService
+  ) {
+    this.organizations = [
+      { id: 1, name: 'Senya Zakharov', tag: 'senyazak', description: 'hihjijijjii' },
+      { id: 2, name: 'Andrew', tag: 'djcooki', description: 'hihjijijjii' },
     ];
   }
 
   ngOnInit(): void {
-    this.httpService.getTasks().subscribe((tasks: any)=> {
+    this.httpService.getTasks().subscribe((tasks: any) => {
       this.dailyTasks = tasks;
-    })
+    });
   }
-
 
   ngAfterViewInit() {
     this.updateMath();
@@ -49,8 +52,8 @@ export class HomePage implements OnInit {
 
   updateMath() {
     setTimeout(() => {
-      if (MathJax) {
-        MathJax.typesetPromise();
+      if (this.mathContent) {
+        this.mathJaxService.renderMath(this.mathContent.nativeElement);
       }
     }, 100);
   }
@@ -60,16 +63,14 @@ export class HomePage implements OnInit {
   }
 
   onOrganizationClick(tag: string) {
-    this.router.navigate(['organization', tag, 'main'])
+    this.router.navigate(['organization', tag, 'main']);
   }
 
   getAvailableTasks() {
     const today = new Date();
-    return this.dailyTasks.filter(task => {
+    return this.dailyTasks.filter((task) => {
       const taskDate = new Date(task.date.split('/').reverse().join('-'));
       return taskDate <= today;
     });
   }
-  
-
 }

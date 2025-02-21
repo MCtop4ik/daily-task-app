@@ -1,0 +1,11 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>DeleteDailyTask</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-title *ngFor="let task of tasks">{{ task['id'] }}{{ task['task'] }}</ion-title>
+  <ion-input type="number" [(ngModel)]="id"></ion-input>
+  <ion-button (click)="deleteTask()">Delete</ion-button>
+</ion-content>
