@@ -1,13 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpService {
-  // private baseUrl = 'https://sparkydolphins.ru/api';
-  private baseUrl = 'http://localhost:5000';
+  private baseUrl = environment.host;
 
   constructor(private http: HttpClient) {}
 
